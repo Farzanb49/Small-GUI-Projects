@@ -5,10 +5,16 @@
  * @author (your name)
  * @version (a version number or a date)
  */
+
+/*importing necessary libraries*/
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
+
 public class Tictactoe extends JPanel implements ActionListener {
+    
+    /*declare global variables*/  
     JButton i;
     JButton ii;
     JButton iii;
@@ -20,10 +26,12 @@ public class Tictactoe extends JPanel implements ActionListener {
     JButton nine;
     JLabel victor;  
    
+    /*main method*/
     public static void main (String args []){
         
         Tictactoe content = new Tictactoe();
         
+        /*create window for game with a JFrame widget*/
         JFrame frame = new JFrame("TicTacOX");
         frame.setSize(180,190);
         frame.setContentPane(content);
@@ -31,7 +39,10 @@ public class Tictactoe extends JPanel implements ActionListener {
         frame.setVisible(true);
     }
 
+    /*constructor*/
     public Tictactoe (){
+        
+        /*Declare widgets*/
         JLabel title = new JLabel ("Tic-Tac-Toe!");
         title.setFont(new Font ("Arial", Font.BOLD, 20));
         i = new JButton ("1");
@@ -44,6 +55,8 @@ public class Tictactoe extends JPanel implements ActionListener {
         viii = new JButton ("8");
         nine = new JButton ("9");
         victor = new JLabel("");
+        
+        /*For JButtons, we need to set ActionCommands and add ActionListeners so that the buttons can be made interactive for the users to use*/
         i.setActionCommand("1");
         ii.setActionCommand("2");
         iii.setActionCommand("3");
@@ -62,6 +75,8 @@ public class Tictactoe extends JPanel implements ActionListener {
         vii.addActionListener(this);
         viii.addActionListener(this);
         nine.addActionListener(this);
+        
+        /*Add the widgets to the JFrame*/
         add (title);
         add (i);
         add (ii);
@@ -74,9 +89,13 @@ public class Tictactoe extends JPanel implements ActionListener {
         add (nine);
         add (victor);
     }
+    
+    /*local variables*/
+    /* int turn distinguishes what player's turn it is and the other is a string that outputs X or O depending on user's input*/
     int turn = 1;
     String xoro;
 
+    /*actionPerformed method that makes buttons functionable and allows user interaction*/
     public void actionPerformed (ActionEvent e){
         if (turn%2==1)
             xoro = "X";
